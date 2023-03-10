@@ -37,8 +37,9 @@ const SearhBar = () => {
 
                     }
                 }} />
-                <Button className="bg-[#F4F5F6] border-none shadow-none" aria-describedby={id} variant="contained" onClick={handleClick}>
-                    <span className="text-sm text-[#32363A] leading-[26px] capitalize font-['Roboto']">Categories</span>
+                <Button className="flex items-center gap-3 bg-[#F4F5F6] border-none shadow-none" aria-describedby={id} variant="contained" onClick={handleClick}>
+                    <span className="text-sm text-[#32363A] leading-[26px] capitalize font-roboto">Categories</span>
+                    <img src="./assets/expand_more.svg " alt="" />
                 </Button>
                 <Popover
                     id={id}
