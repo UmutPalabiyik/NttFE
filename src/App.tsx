@@ -2,6 +2,7 @@ import { Box } from '@mui/material'
 import { useState } from 'react'
 
 import './App.css'
+import ProductCarousel from './components/Carousel/Carousel'
 import Header from './components/Header/Header'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
       <Box>
         <Header />
+        <ProductCarousel />
       </Box>
     </div>
   )
