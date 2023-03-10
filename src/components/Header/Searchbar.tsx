@@ -21,8 +21,8 @@ const SearhBar = () => {
     const id = open ? 'simple-popover' : undefined;
 
     return (
-        <Box className="hidden md:flex gap-2.5">
-            <Box className="flex border border-[#89919A] rounded ">
+        <Box className="hidden md:flex gap-2.5 2xl:flex-1">
+            <Box className="flex border border-[#89919A] rounded 2xl:flex-1">
                 <TextField className="text-[#74777A] font-medium font-['Roboto'] leading-6 flex-1 ]" placeholder="Search" sx={{
                     '& fieldset': {
                         border: 'none'
