@@ -18,6 +18,7 @@ const Header = () => {
 
                     <MobileSearchBar />
                     <SearhBar />
+                    
 
                 </Box>
 
