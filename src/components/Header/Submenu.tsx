@@ -2,10 +2,9 @@
 import { useState } from "react";
 
 //mui
-import { Box, useMediaQuery, Grid, Button, Popover } from "@mui/material";
+import { Box, Button, Popover, useMediaQuery } from "@mui/material";
 
 //component
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import SubmenuItem from "./SubmenuItem";
 
 
@@ -129,6 +128,54 @@ const Submenu = () => {
                 menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
             }
         ]
+    }, {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    }, {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    }, {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    }, {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
     },
     ]
 
@@ -138,13 +185,13 @@ const Submenu = () => {
             <Box className="flex justify-between pb-2.5 pt-6">
                 {
                     isDesktop ? (
-                        menu.map(({ title, submenu }) => <SubmenuItem title={title} submenu={submenu}/>)
+                        menu.map(({ title, submenu }, key) => <SubmenuItem title={title} submenu={submenu} key={key} />)
 
 
                     ) : isTablet ? (
                         <Box className="flex justify-between items-center w-full ">
                             {
-                                menu.slice(0, 6).map(({ title, submenu }) => <SubmenuItem title={title} submenu={submenu}/>)
+                                menu.slice(0, 6).map(({ title, submenu }) => <SubmenuItem title={title} submenu={submenu} />)
                             }
                             <Box>
                                 <Button className="flex items-center gap-2 border-none shadow-none bg-transparent py-0 pb-3" aria-describedby={id} variant="contained" onClick={handleClick}>
@@ -160,11 +207,11 @@ const Submenu = () => {
                                         horizontal: 'left',
                                     }}
                                 >
-                                    <Box >
+                                    <Box className="flex flex-col gap-y-2.5 bg-[#F4F5F6] p-3 ">
                                         {menu.slice(6).map(({ title }, key) => (
-                                            <Box key={key}>
+                                            <p className="text-sm text-[#6A6D70] font-medium font-['Roboto'] leading-4" key={key}>
                                                 {title}
-                                            </Box>
+                                            </p>
                                         ))}
                                     </Box>
                                 </Popover>

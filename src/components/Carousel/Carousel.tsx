@@ -19,22 +19,22 @@ const ProductCarousel = () => {
         defaultSrc: "assets/product-desktop.png"
     },
     {
-        mobileSrc: "assets/product-mobile.png",
-        tabletSrc: "assets/product-tablet.png",
-        desktopSrc: "assets/product-desktop.png",
-        defaultSrc: "assets/product-desktop.png"
+        mobileSrc: "assets/product2-mobile.png",
+        tabletSrc: "assets/product2-tablet.png",
+        desktopSrc: "assets/product2-desktop.png",
+        defaultSrc: "assets/product2-desktop.png"
     },
     {
-        mobileSrc: "assets/product-mobile.png",
-        tabletSrc: "assets/product-tablet.png",
-        desktopSrc: "assets/product-desktop.png",
-        defaultSrc: "assets/product-desktop.png"
+        mobileSrc: "assets/product3-mobile.png",
+        tabletSrc: "assets/product3-tablet.png",
+        desktopSrc: "assets/product3-desktop.png",
+        defaultSrc: "assets/product3-desktop.png"
     },
     {
-        mobileSrc: "assets/product-mobile.png",
-        tabletSrc: "assets/product-tablet.png",
-        desktopSrc: "assets/product-desktop.png",
-        defaultSrc: "assets/product-desktop.png"
+        mobileSrc: "assets/product4-mobile.png",
+        tabletSrc: "assets/product4-tablet.png",
+        desktopSrc: "assets/product4-desktop.png",
+        defaultSrc: "assets/product4-desktop.png"
     }]
 
 
@@ -77,9 +77,9 @@ const ProductCarousel = () => {
                 );
             }} className="max-h-[450px] max-w-screen-xl mx-auto">
                 {
-                    carouselItems.map((item) => {
+                    carouselItems.map((item, key) => {
                         const { mobileSrc, tabletSrc, desktopSrc, defaultSrc } = item
-                        return <CarouselPicture mobileSrc={mobileSrc} tabletSrc={tabletSrc} desktopSrc={desktopSrc} defaultSrc={defaultSrc} />
+                        return <CarouselPicture mobileSrc={mobileSrc} tabletSrc={tabletSrc} desktopSrc={desktopSrc} defaultSrc={defaultSrc} key={key} />
                     })
                 }
             </Carousel>

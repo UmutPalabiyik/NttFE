@@ -5,6 +5,9 @@ import { useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import { Box, IconButton, Popover, Typography, Button, TextField } from "@mui/material";
 
+//component
+import CategoriesPopoverContent from "./CategoriesPopoverContent";
+
 const SearhBar = () => {
 
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
@@ -51,7 +54,7 @@ const SearhBar = () => {
                         horizontal: 'left',
                     }}
                 >
-                    <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                    <CategoriesPopoverContent />
                 </Popover>
 
 
