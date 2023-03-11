@@ -4,6 +4,11 @@ import { useState } from "react";
 //mui
 import { Box, useMediaQuery, Grid, Button, Popover } from "@mui/material";
 
+//component
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import SubmenuItem from "./SubmenuItem";
+
+
 
 const Submenu = () => {
 
@@ -24,47 +29,125 @@ const Submenu = () => {
     const isDesktop = useMediaQuery('(min-width:1440px)')
     const isTablet = useMediaQuery('(min-width:768px)')
 
-    const menu = [
-        "Menu Item",
-        "Menu Item",
-        "Menu Item",
-        "Menu Item",
-        "Menu Item",
-        "Menu Item",
-        "Menu Item",
-        "Menu Item",
-        "Menu Item",
-        "Menu Item",
-        "Menu Item",
-        "Menu Item",
+
+
+    const menu = [{
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    },
+    {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    },
+    {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    }, {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    }, {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    }, {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    }, {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    }, {
+        title: "Menu Item",
+        submenu: [
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            },
+            {
+                title: "Header",
+                menu: ["Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader", "Subheader"]
+            }
+        ]
+    },
     ]
 
 
-    console.log("asdas ==>", isDesktop)
     return (
         <Box className="px-4 md:px-8 xl:px-0 max-w-screen-xl mx-auto">
-            <Box className="flex justify-between">
+            <Box className="flex justify-between pb-2.5 pt-6">
                 {
                     isDesktop ? (
-                        menu.map((item) => {
-                            return <p className="text-sm text-[#6A6D70] font-medium font-['Roboto'] py-6">{item}</p>
-                        })
+                        menu.map(({ title, submenu }) => <SubmenuItem title={title} submenu={submenu}/>)
 
 
                     ) : isTablet ? (
-                        <Box className="flex justify-between items-center w-full">
+                        <Box className="flex justify-between items-center w-full ">
                             {
-                                menu.slice(0, 6).map((item) => {
-                                    return (
-                                        <>
-                                            <p className="text-sm text-[#6A6D70] font-medium font-['Roboto'] py-6">{item}</p>
-
-                                        </>
-                                    )
-                                })
+                                menu.slice(0, 6).map(({ title, submenu }) => <SubmenuItem title={title} submenu={submenu}/>)
                             }
-                            <Box >
-                                <Button className="flex items-center gap-2 border-none shadow-none bg-transparent " aria-describedby={id} variant="contained" onClick={handleClick}>
+                            <Box>
+                                <Button className="flex items-center gap-2 border-none shadow-none bg-transparent py-0 pb-3" aria-describedby={id} variant="contained" onClick={handleClick}>
                                     <span className="text-sm text-[#6A6D70] leading-4 capitalize font-roboto">More</span>
                                     <img src="./assets/expand_more.svg " alt="" />
                                 </Button>
@@ -78,9 +161,9 @@ const Submenu = () => {
                                     }}
                                 >
                                     <Box >
-                                        {menu.slice(6).map((item, key) => (
+                                        {menu.slice(6).map(({ title }, key) => (
                                             <Box key={key}>
-                                                {item}
+                                                {title}
                                             </Box>
                                         ))}
                                     </Box>
