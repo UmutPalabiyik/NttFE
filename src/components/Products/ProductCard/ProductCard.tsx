@@ -28,6 +28,7 @@ const ProductCard = (props: ProductCardProps) => {
     const { favoriteProducts, products } = useAppSelector(state => state.productsSlice)
 
     const lineHeightLimit = 18
+    const isFavorite = favoriteProducts.some((favorite: any) => favorite.id === id)
 
     const CardText = (props: { text: string, className?: string, ref?: any }) => <p className={`px-2 py-1 text-[#00254F] leading-4 font-["Roboto"] ${props.className}`} ref={props.ref}>{props.text}</p>
 
@@ -38,27 +39,26 @@ const ProductCard = (props: ProductCardProps) => {
     }, [])
 
     const handleFavorite = () => {
-        setFavoriteStatus(!favoriteStatus)
-    }
-
-
-    useEffect(() => {
         const _favoriteProducts = [...favoriteProducts];
-        if (favoriteStatus) {
+        if (!isFavorite) {
             const product = products.find((item: any) => item.id === id);
             dispatch(handleFavoriteProducts([..._favoriteProducts, product]));
         } else {
             const newFavoriteProducts = _favoriteProducts.filter((product) => product.id !== id);
             dispatch(handleFavoriteProducts(newFavoriteProducts))
         }
+    }
 
-    }, [favoriteStatus])
+
+    /*  */
+
+
 
     return (
         <Box className="py-2 px-2.5 border border-[#E6E6E6] rounded relative">
             <Box className="flex items-center justify-center absolute right-[20px] top-[20px] cursor-pointer w-8 h-8 rounded-full bg-white" onClick={handleFavorite}>
                 {
-                    favoriteStatus ? <FavoriteIcon sx={{
+                    isFavorite ? <FavoriteIcon sx={{
                         '& path': {
                             color: "#c41d1d"
                         }
