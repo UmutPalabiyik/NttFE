@@ -49,6 +49,7 @@ const SearhBar = () => {
                     open={open}
                     anchorEl={anchorEl}
                     onClose={handleClose}
+                    className="mt-3"
                     anchorOrigin={{
                         vertical: 'bottom',
                         horizontal: 'left',
