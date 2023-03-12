@@ -2,14 +2,17 @@
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Box } from "@mui/material";
 
+//redux
+import { useAppSelector } from '../../utils/reduxHooks';
+
 const FavoritesCount = () => {
 
-    const favoritesCount = 0
-    return (
+    const { favoriteProducts } = useAppSelector(state => state.productsSlice)
 
+    return (
         <Box className="flex items-center gap-x-2">
             <FavoriteBorderIcon />
-            <p className="text-[#000000] text-base font-medium font-['Roboto'] leading-[19px]">{favoritesCount} ÜRÜN</p>
+            <p className="text-[#000000] text-base font-medium font-['Roboto'] leading-[19px]">{favoriteProducts.length} ÜRÜN</p>
         </Box>
     )
 }

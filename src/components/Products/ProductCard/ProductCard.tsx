@@ -3,9 +3,15 @@ import { useState, useRef, useEffect } from "react";
 
 //mui
 import { Box } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 //interface
 import { ProductCardProps } from '../interface/interface';
+
+//redux
+import { useAppDispatch, useAppSelector } from "../../../utils/reduxHooks";
+import { handleFavoriteProducts } from "../../../features/products/productsSlice";
 
 
 
@@ -15,6 +21,11 @@ const ProductCard = (props: ProductCardProps) => {
     //react
     const descriptionRef = useRef<any>(null)
     const [descriptionLinesCount, setDescriptionLinesCount] = useState(0)
+    const [favoriteStatus, setFavoriteStatus] = useState(false)
+
+    //redux
+    const dispatch = useAppDispatch()
+    const { favoriteProducts, products } = useAppSelector(state => state.productsSlice)
 
     const lineHeightLimit = 18
 
@@ -26,10 +37,39 @@ const ProductCard = (props: ProductCardProps) => {
 
     }, [])
 
+    const handleFavorite = () => {
+        setFavoriteStatus(!favoriteStatus)
+    }
+
+
+    useEffect(() => {
+        const _favoriteProducts = [...favoriteProducts];
+        if (favoriteStatus) {
+            const product = products.find((item: any) => item.id === id);
+            dispatch(handleFavoriteProducts([..._favoriteProducts, product]));
+        } else {
+            const newFavoriteProducts = _favoriteProducts.filter((product) => product.id !== id);
+            dispatch(handleFavoriteProducts(newFavoriteProducts))
+        }
+
+    }, [favoriteStatus])
 
     return (
         <Box className="py-2 px-2.5 border border-[#E6E6E6] rounded relative">
-            <img className='absolute right-[20px] top-[20px] cursor-pointer' src="/assets/empty_favorite.svg" alt="" />
+            <Box className="flex items-center justify-center absolute right-[20px] top-[20px] cursor-pointer w-8 h-8 rounded-full bg-white" onClick={handleFavorite}>
+                {
+                    favoriteStatus ? <FavoriteIcon sx={{
+                        '& path': {
+                            color: "#c41d1d"
+                        }
+                    }} /> : <FavoriteBorderIcon sx={{
+                        '& path': {
+                            color: "#D1D1D1"
+                        }
+                    }} />
+                }
+            </Box>
+
             <img className='aspect-[2/1.5]' src={imageUrl} alt="" />
             <Box className="py-3">
                 <CardText text={name} className="font-semibold leading-[19px]" />
@@ -37,9 +77,9 @@ const ProductCard = (props: ProductCardProps) => {
                 <CardText text="Description" className="font-medium text-xs leading-[14px]" />
                 <p className="px-2 pt-1 pb-0 text-[#00254F] text-xs leading-[14px] line-clamp-2 overflow-hidden text-ellipsis" ref={descriptionRef} >{description}</p>
                 {
-                    descriptionLinesCount > 18 && <p className="px-2 text-xs text-[#0059BC] font-medium leading-[14px] italic cursor-pointer">devamı gör</p>
+                    descriptionLinesCount > lineHeightLimit && <p className="px-2 text-xs text-[#0059BC] font-medium leading-[14px] italic cursor-pointer">devamı gör</p>
                 }
-                <CardText text='Ücretsiz - Aynı gün kargo' className='text-[#000000] text-[10px] leading-3 pt-2' />
+                <CardText text={shippingMethod} className='text-[#000000] text-[10px] leading-3 pt-2' />
 
             </Box>
         </Box>
