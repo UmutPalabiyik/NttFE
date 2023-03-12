@@ -12,7 +12,6 @@ export const getProducts = createAsyncThunk('getProducts',async (_, { rejectWith
 
     try {
         const response = await apiService.get('/products')
-        console.log("response ==>", response)
 
         return response
     } catch (error) {
