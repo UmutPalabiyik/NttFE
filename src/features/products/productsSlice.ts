@@ -7,7 +7,8 @@ import { getProducts } from "./productsActions";
 
 const initialState = {
     products: [] as any,
-    favoriteProducts: []
+    favoriteProducts: [],
+    productsToBeRenderStatus: false
 }
 
 export const productsSlice = createSlice({
@@ -16,6 +17,9 @@ export const productsSlice = createSlice({
     reducers: {
         handleFavoriteProducts: (state, { payload }) => {
             state.favoriteProducts = payload
+        },
+        handleProductsToBeRenderStatus: (state, { payload }) => {
+            state.productsToBeRenderStatus = payload
         }
     },
     extraReducers: (builder) => {
@@ -29,4 +33,4 @@ export const productsSlice = createSlice({
 
 
 export default productsSlice.reducer;
-export const { handleFavoriteProducts } = productsSlice.actions
+export const { handleFavoriteProducts, handleProductsToBeRenderStatus } = productsSlice.actions

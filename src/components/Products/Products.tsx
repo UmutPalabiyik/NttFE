@@ -17,7 +17,7 @@ const Products = () => {
     const [displayLimit, setDisplayLimit] = useState(4)
 
     const dispatch = useAppDispatch()
-    const { products } = useAppSelector(state => state.productsSlice)
+    const { products, favoriteProducts, productsToBeRenderStatus } = useAppSelector(state => state.productsSlice)
 
     const handleDisplayLimit = () => {
         setDisplayLimit(displayLimit + 4)
@@ -28,12 +28,13 @@ const Products = () => {
         dispatch(getProducts())
     }, [])
 
+    const productsToRender = productsToBeRenderStatus ? favoriteProducts : products
 
     return <Box className="px-4 md:px-8 xl:px-0 max-w-screen-xl mx-auto">
         <ProductsHeader />
         <Box className="pt-6 mx-auto container grid grid-cols-1 xs:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 gap-4">
             {
-                products.slice(0, displayLimit).map((product: any, key: any) => {
+                productsToRender.slice(0, displayLimit).map((product: any, key: any) => {
                     const { id, name, description, imageUrl, price, shippingMethod } = product
                     return <ProductCard id={id} name={name} description={description} imageUrl={imageUrl} price={price} shippingMethod={shippingMethod} key={key} />
                 })
