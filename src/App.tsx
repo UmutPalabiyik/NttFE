@@ -8,6 +8,7 @@ import './App.css'
 import ProductCarousel from './components/Carousel/Carousel'
 import Header from './components/Header/Header'
 import Products from './components/Products/Products'
+import Footer from './components/Footer/Footer'
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Header />
         <ProductCarousel />
         <Products />
+        <Footer />
       </Box>
     </div>
   )
