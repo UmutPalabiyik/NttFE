@@ -64,6 +64,7 @@ const ProductCarousel = () => {
                         style={style}
                         onClick={onClickHandler}
                         onKeyDown={onClickHandler}
+                        // @ts-ignore
                         value={index}
                         key={index}
                         role="button"

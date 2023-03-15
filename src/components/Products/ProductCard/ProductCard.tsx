@@ -44,7 +44,7 @@ const ProductCard = (props: ProductCardProps) => {
             const product = products.find((item: any) => item.id === id);
             dispatch(handleFavoriteProducts([..._favoriteProducts, product]));
         } else {
-            const newFavoriteProducts = _favoriteProducts.filter((product) => product.id !== id);
+            const newFavoriteProducts = _favoriteProducts.filter((product: any) => product.id !== id);
             dispatch(handleFavoriteProducts(newFavoriteProducts))
         }
     }
